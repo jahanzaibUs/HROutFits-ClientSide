@@ -4,3 +4,15 @@
 .PaddingRightAuto{
     padding-right: 0 !important;
 }
+.FontSize22px{
+    font-size: 22px !important;
+}
+.FontWeightBold{
+    font-weight: bold !important;
+}
+.FontColorDefault{
+    color: #3f51b5 !important;
+}
+.Width100{
+    width: 100%;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView, MDBContainer } from
 "mdbreact";
+import Banner from "../../../assets/banner.jpg";
 
 const CarouselPage = () => {
   return (
@@ -17,7 +18,8 @@ const CarouselPage = () => {
             <MDBView>
               <img
                 className="d-block w-100"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+                src={Banner}
+                // "https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
                 alt="First slide"
               />
             </MDBView>
