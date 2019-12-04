@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import Shirt from "../../assets/Mens/shirts.jpg"
 class ItemsMainPageComponent extends Component{
@@ -23,18 +24,21 @@ class ItemsMainPageComponent extends Component{
                   console.log(text.img)
                   return(
                         <MDBCol md="4" key={index}>
-                        <MDBCard style={{ width: "20rem" }}>
-                            <MDBCardImage className="img-fluid" src={text.img.Shirt}
-                            // "https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
-                            waves />
-                            <MDBCardBody>
-                            <MDBCardTitle>{text.Title}</MDBCardTitle>
-                            <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
-                              Rs. {text.Price}
-                            </MDBCardText>
-                            <MDBBtn href="#" className="Width100" >Add to Cart</MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
+
+                            <Link to="/cart">
+                            <MDBCard style={{ width: "20rem" }}>
+                                <MDBCardImage className="img-fluid" src={text.img.Shirt}
+                                // "https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
+                                waves />
+                                <MDBCardBody>
+                                <MDBCardTitle>{text.Title}</MDBCardTitle>
+                                <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
+                                Rs. {text.Price}
+                                </MDBCardText>
+                                <MDBBtn href="#" className="Width100" >Add to Cart</MDBBtn>
+                                </MDBCardBody>
+                            </MDBCard>
+                            </Link>
                         </MDBCol>
 
                   )

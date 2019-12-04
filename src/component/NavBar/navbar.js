@@ -29,16 +29,10 @@ render() {
             <MDBNavItem active>
               <MDBNavLink to="/">Home</MDBNavLink>
             </MDBNavItem>
-            {/* <MDBNavItem>
-              <MDBNavLink to="#!">Features</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Pricing</MDBNavLink>
-            </MDBNavItem> */}
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                  <span className="mr-2">Categories</span>
+                  <span className="mr-2">Mens</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <Link to="/mens-items">
@@ -46,6 +40,38 @@ render() {
                   </Link>
                   <MDBDropdownItem >Women's</MDBDropdownItem>
                   <MDBDropdownItem >Jewelery</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Women's</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                    <MDBDropdownItem >
+                  <Link to="/mens-items">
+                      Shirts
+                  </Link>
+                      </MDBDropdownItem>
+                  <MDBDropdownItem >Denim</MDBDropdownItem>
+                  <MDBDropdownItem >Tees Plain</MDBDropdownItem>
+                  <MDBDropdownItem >Tees Graphics</MDBDropdownItem>
+
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavItem>
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Accessories</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <Link to="/mens-items">
+                    <MDBDropdownItem >Hats</MDBDropdownItem>
+                  </Link>
+                  <MDBDropdownItem >Belts</MDBDropdownItem>
+                  <MDBDropdownItem >Chains</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
