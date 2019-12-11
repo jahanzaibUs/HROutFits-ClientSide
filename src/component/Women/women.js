@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import Shirt from "../../assets/Mens/shirts.jpg"
-class ItemsMainPageComponent extends Component{
+class WomenComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -17,7 +17,7 @@ class ItemsMainPageComponent extends Component{
 
         return (
             <MDBContainer className="mt-5">
-        <h1>Men's Arrivals</h1>
+        <h1>Women's Arrivals</h1>
       <MDBRow>
           {
               this.state.Items.map((text,index) =>{
@@ -50,4 +50,4 @@ class ItemsMainPageComponent extends Component{
     }
 }
 
-export default ItemsMainPageComponent;
+export default WomenComponent;
