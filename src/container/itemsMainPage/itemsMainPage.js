@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ItemsMainPageComponent from "../../component/ItemsMainPage/itemsMainPage";
-class ItemsMainPageContainert extends Component{
+import MensComponent from "../../component/Men/men";
+class MensContainert extends Component{
   
 render(){
     return(
-        <ItemsMainPageComponent />
+        <MensComponent />
         );
     }
 }
 
-export default ItemsMainPageContainert;
+export default MensContainert;
