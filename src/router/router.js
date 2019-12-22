@@ -10,6 +10,7 @@ import NewArrivalContainert from "../container/newarrival/newarrival";
 import ItemsMainPageContainert from "../container/itemsMainPage/itemsMainPage";
 import FooterContainert from "../container/footer/footer";
 import CartContainert from "../container/cart/cart";
+import AdminContainert from "../container/admin/admin";
 
 class RouteObject extends Component{
   
@@ -24,13 +25,15 @@ render(){
         <Route path={match.url} exact component={NewArrivalContainert} />
         <Route path={match.url+"mens-items"} exact component={ItemsMainPageContainert} />
         <Route path={match.url+"cart"} exact component={CartContainert} />
-        
+        <Route path='/jahanzaibusman'  component={AdminContainert} />        
         <FooterContainert />
     </div>
         )
+      
     return(
            <Router>
                     <Route path='/'  component={landingpageBanner} />
+
             
                     
         </Router>

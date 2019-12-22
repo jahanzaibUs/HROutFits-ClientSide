@@ -35,11 +35,17 @@ render() {
                   <span className="mr-2">Mens</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
+                    <MDBDropdownItem >
                   <Link to="/mens-items">
-                    <MDBDropdownItem >Men's</MDBDropdownItem>
+                      Winter Wear
                   </Link>
-                  <MDBDropdownItem >Women's</MDBDropdownItem>
-                  <MDBDropdownItem >Jewelery</MDBDropdownItem>
+                      </MDBDropdownItem>
+                  <MDBDropdownItem >Shirts</MDBDropdownItem>
+                  <MDBDropdownItem >Basic Tees</MDBDropdownItem>
+                  <MDBDropdownItem >Graphics Tees</MDBDropdownItem>
+                  <MDBDropdownItem >Polo</MDBDropdownItem>
+                  <MDBDropdownItem >Denim</MDBDropdownItem>
+
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -51,12 +57,14 @@ render() {
                 <MDBDropdownMenu>
                     <MDBDropdownItem >
                   <Link to="/mens-items">
-                      Shirts
+                      Winter Wear
                   </Link>
                       </MDBDropdownItem>
+                  <MDBDropdownItem >Tops</MDBDropdownItem>
+                  <MDBDropdownItem >Shirts</MDBDropdownItem>
                   <MDBDropdownItem >Denim</MDBDropdownItem>
-                  <MDBDropdownItem >Tees Plain</MDBDropdownItem>
-                  <MDBDropdownItem >Tees Graphics</MDBDropdownItem>
+                  <MDBDropdownItem >Bags</MDBDropdownItem>
+                  <MDBDropdownItem >Shawls</MDBDropdownItem>
 
                 </MDBDropdownMenu>
               </MDBDropdown>
@@ -68,10 +76,14 @@ render() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <Link to="/mens-items">
-                    <MDBDropdownItem >Hats</MDBDropdownItem>
+                    <MDBDropdownItem >Watchs</MDBDropdownItem>
                   </Link>
+                  <MDBDropdownItem >Caps</MDBDropdownItem>
+                  <MDBDropdownItem >Bracelets</MDBDropdownItem>
+                  <MDBDropdownItem >Socks</MDBDropdownItem>
                   <MDBDropdownItem >Belts</MDBDropdownItem>
-                  <MDBDropdownItem >Chains</MDBDropdownItem>
+                  <MDBDropdownItem >Glasses</MDBDropdownItem>
+
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

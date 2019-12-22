@@ -5,6 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'mdbreact/dist/css/mdb.css';
 import "./style/style.css"
+
+
+
 // import "./assets/scss/mdb.scss";
 ReactDOM.render(<App />, document.getElementById('root'));
 

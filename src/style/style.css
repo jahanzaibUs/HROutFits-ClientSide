@@ -7,6 +7,10 @@
 .Padding0{
     padding: 0;
 }
+.PositionFixed{
+    position: fixed;
+}
+
 .FontSize22px{
     font-size: 22px !important;
 }
