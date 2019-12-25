@@ -1,6 +1,4 @@
-import Firebase from 'react-firebase';
-import { connect } from 'react-firebase'
-
+import firebase from 'firebase/app';
 import "firebase/storage";
 
 const firebaseConfig = {
@@ -14,9 +12,9 @@ const firebaseConfig = {
     measurementId: "G-MP1MR8VP10"
   };
 
-  Firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   
-  const Storage = Firebase.storage();
+  const Storage = firebase.storage();
   export {
-    Storage, Firebase as default
+    Storage, firebase as default
   }

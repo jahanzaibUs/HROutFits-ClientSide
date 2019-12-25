@@ -10,7 +10,9 @@
 .PositionFixed{
     position: fixed;
 }
-
+.MarginBottom5{
+    margin-bottom: 5%;
+}
 .FontSize22px{
     font-size: 22px !important;
 }

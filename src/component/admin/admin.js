@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
-// import {Storage} from "../firebase"
+import {Storage} from "../firebase"
 class AdminComponent extends React.Component {
   constructor(){
     super();
@@ -11,7 +11,10 @@ class AdminComponent extends React.Component {
       city: "",
       state: "",
       zip: "",
-      images: [],
+      image: null,
+      url: "",
+      progress: 0
+
     };
     this.imegesState = this.imegesState.bind(this);
   }
@@ -19,17 +22,38 @@ class AdminComponent extends React.Component {
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
-
-
-
+    const {image} = this.state;
+    const uploadTask = Storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+     (snapshot) => {
+      const progress = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      );
+      this.setState({ progress });
+     },
+     (error) => {
+      console.log(error);
+     },
+     () => {
+        Storage
+        .ref("images")
+        .child(image.name)
+        .getDownloadURL()
+        .then(url => {
+          console.log(url, "url")
+          this.setState({ url });
+        });
+     }
+    )
 
   };
 
   imegesState= e => {
     console.log(e.target.files);
     if(e.target.files[0]){
-      const image = e.target.files[0];
-      this.setState({images: image})
+      const Image = e.target.files[0];
+      this.setState({image: Image})
     }
   }
 
@@ -38,9 +62,10 @@ class AdminComponent extends React.Component {
   };
 
   render() {
+    console.log(this.state.image);
     console.log(this.state)
     return (
-      <div>
+      <div className="MarginBottom5">
         <form
           className="needs-validation"
           onSubmit={this.submitHandler}
@@ -52,7 +77,7 @@ class AdminComponent extends React.Component {
                 htmlFor="defaultFormRegisterNameEx"
                 className="grey-text"
               >
-                First name
+                Name of Product:
               </label>
               <input
                 value={this.state.fname}
@@ -61,7 +86,7 @@ class AdminComponent extends React.Component {
                 type="text"
                 id="defaultFormRegisterNameEx"
                 className="form-control"
-                placeholder="First name"
+                placeholder="Product Name"
                 required
               />
               <div className="valid-feedback">Looks good!</div>
@@ -71,127 +96,24 @@ class AdminComponent extends React.Component {
                 htmlFor="defaultFormRegisterEmailEx2"
                 className="grey-text"
               >
-                Last name
+                Price:
               </label>
               <input
                 value={this.state.lname}
-                name="lname"
+                name="Price"
                 onChange={this.changeHandler}
-                type="text"
+                type="number"
                 id="defaultFormRegisterEmailEx2"
                 className="form-control"
-                placeholder="Last name"
+                placeholder="Price"
                 required
               />
               <div className="valid-feedback">Looks good!</div>
             </MDBCol>
-            <MDBCol md="4" className="mb-3">
-              <label
-                htmlFor="defaultFormRegisterConfirmEx3"
-                className="grey-text"
-              >
-                Email
-              </label>
-              <input
-                value={this.state.email}
-                onChange={this.changeHandler}
-                type="email"
-                id="defaultFormRegisterConfirmEx3"
-                className="form-control"
-                name="email"
-                placeholder="Your Email address"
-              />
-              <small id="emailHelp" className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small>
-            </MDBCol>
+            
           </MDBRow>
-          <MDBRow>
-            <MDBCol md="4" className="mb-3">
-              <label
-                htmlFor="defaultFormRegisterPasswordEx4"
-                className="grey-text"
-              >
-                City
-              </label>
-              <input
-                value={this.state.city}
-                onChange={this.changeHandler}
-                type="text"
-                id="defaultFormRegisterPasswordEx4"
-                className="form-control"
-                name="city"
-                placeholder="City"
-                required
-              />
-              <div className="invalid-feedback">
-                Please provide a valid city.
-              </div>
-              <div className="valid-feedback">Looks good!</div>
-            </MDBCol>
-            <MDBCol md="4" className="mb-3">
-              <label
-                htmlFor="defaultFormRegisterPasswordEx4"
-                className="grey-text"
-              >
-                State
-              </label>
-              <input
-                value={this.state.state}
-                onChange={this.changeHandler}
-                type="text"
-                id="defaultFormRegisterPasswordEx4"
-                className="form-control"
-                name="state"
-                placeholder="State"
-                required
-              />
-              <div className="invalid-feedback">
-                Please provide a valid state.
-              </div>
-              <div className="valid-feedback">Looks good!</div>
-            </MDBCol>
-            <MDBCol md="4" className="mb-3">
-              <label
-                htmlFor="defaultFormRegisterPasswordEx4"
-                className="grey-text"
-              >
-                Zip
-              </label>
-              <input
-                value={this.state.zip}
-                onChange={this.changeHandler}
-                type="text"
-                id="defaultFormRegisterPasswordEx4"
-                className="form-control"
-                name="zip"
-                placeholder="Zip"
-                required
-              />
-              <div className="invalid-feedback">
-                Please provide a valid zip.
-              </div>
-              <div className="valid-feedback">Looks good!</div>
-            </MDBCol>
-          </MDBRow>
-          <MDBCol md="4" className="mb-3">
-            <div className="custom-control custom-checkbox pl-3">
-              <input
-                className="custom-control-input"
-                type="checkbox"
-                value=""
-                id="invalidCheck"
-                required
-              />
-              <label className="custom-control-label" htmlFor="invalidCheck">
-                Agree to terms and conditions
-              </label>
-              <div className="invalid-feedback">
-                You must agree before submitting.
-              </div>
-            </div>
-          </MDBCol>
-          <MDBCol>
+        <MDBRow>
+          <MDBCol md="4">
             <div className="custom-file">
             <input
                 type="file"
@@ -199,15 +121,19 @@ class AdminComponent extends React.Component {
                 id="validatedCustomFile"
                 required
                 onChange={this.imegesState}
-            />
+                />
             <label
                 className="custom-file-label"
                 htmlFor="validatedCustomFile"
-            >
+                >
                 Choose file...
             </label>
             </div>
           </MDBCol>
+          <MDBCol md="4">
+            <img src={this.state.url || "http://via.placeholder.com/400x250"} alt="Image" />
+          </MDBCol>
+        </MDBRow>
           <MDBBtn color="primary" type="submit">
             Submit Form
           </MDBBtn>
