@@ -1,12 +1,12 @@
 import React from "react";
 import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
-import {Storage} from "../firebase"
+import {Storage, FireStore} from "../firebase";
 class AdminComponent extends React.Component {
   constructor(){
     super();
     this.state = {
-      fname: "Mark",
-      lname: "Otto",
+      fname: "",
+      Price: 0,
       email: "",
       city: "",
       state: "",
@@ -22,8 +22,57 @@ class AdminComponent extends React.Component {
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
-    const {image} = this.state;
-    const uploadTask = Storage.ref(`images/${image.name}`).put(image);
+    // const {image} = this.state;
+
+
+    // const uploadTask = Storage.ref(`images/${image.name}`).put(image);
+    // uploadTask.on(
+    //   "state_changed",
+    //  (snapshot) => {
+    //   const progress = Math.round(
+    //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //   );
+    //   this.setState({ progress });
+    //  },
+    //  (error) => {
+    //   console.log(error);
+    //  },
+    //  () => {
+    //     Storage
+    //     .ref("images")
+    //     .child(image.name)
+    //     .getDownloadURL()
+    //     .then(url => {
+    //       console.log(url, "url")
+    //       this.setState({ url });
+    //     });
+    //  }
+    // )
+
+    // setTimeout(() => {
+      let data ={
+        Name: this.state.fname,
+        Price: this.state.Price,
+        Image: this.state.url,
+      }
+      console.log(data, 'yes')
+      FireStore.collection('Product').add(data).then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+    // }, 5000);
+  };
+
+  imegesState= e => {
+    console.log(e.target.files);
+    if(e.target.files[0]){
+      const Image = e.target.files[0];
+      this.setState({image: Image})
+
+      const {image} = this.state;
+      const uploadTask = Storage.ref(`images/${Image.name}`).put(Image);
     uploadTask.on(
       "state_changed",
      (snapshot) => {
@@ -38,7 +87,7 @@ class AdminComponent extends React.Component {
      () => {
         Storage
         .ref("images")
-        .child(image.name)
+        .child(Image.name)
         .getDownloadURL()
         .then(url => {
           console.log(url, "url")
@@ -47,13 +96,7 @@ class AdminComponent extends React.Component {
      }
     )
 
-  };
 
-  imegesState= e => {
-    console.log(e.target.files);
-    if(e.target.files[0]){
-      const Image = e.target.files[0];
-      this.setState({image: Image})
     }
   }
 
@@ -99,7 +142,7 @@ class AdminComponent extends React.Component {
                 Price:
               </label>
               <input
-                value={this.state.lname}
+                value={this.state.Price}
                 name="Price"
                 onChange={this.changeHandler}
                 type="number"
@@ -131,7 +174,7 @@ class AdminComponent extends React.Component {
             </div>
           </MDBCol>
           <MDBCol md="4">
-            <img src={this.state.url || "http://via.placeholder.com/400x250"} alt="Image" />
+            <img src={this.state.url || "http://via.placeholder.com/400x250"} width="400px" alt="Image" />
           </MDBCol>
         </MDBRow>
           <MDBBtn color="primary" type="submit">
