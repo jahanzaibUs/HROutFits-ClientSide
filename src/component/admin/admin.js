@@ -13,7 +13,7 @@ class AdminComponent extends React.Component {
       zip: "",
       image: null,
       url: "",
-      progress: 0
+      progress: 0,
 
     };
     this.imegesState = this.imegesState.bind(this);
@@ -58,6 +58,7 @@ class AdminComponent extends React.Component {
       console.log(data, 'yes')
       FireStore.collection('Product').add(data).then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
+        alert("Order Submitted Successfully: ")
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -177,6 +178,7 @@ class AdminComponent extends React.Component {
             <img src={this.state.url || "http://via.placeholder.com/400x250"} width="400px" alt="Image" />
           </MDBCol>
         </MDBRow>
+       
           <MDBBtn color="primary" type="submit">
             Submit Form
           </MDBBtn>

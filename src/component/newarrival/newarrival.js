@@ -11,23 +11,31 @@ class NewArrivalComponent extends Component{
             ]
     }
 }
-render(){
 
+render(){
+  console.log(this.props.ProductDetails)
   return (
     <MDBContainer className="mt-5">
         <h1>New Arrivals</h1>
       <MDBRow>
+
       {
-              this.state.Items.map((text,index) =>{
-                  console.log(text.img)
+              this.props.ProductDetails.map((text,index) => {
+
+              // })
+              // this.state.Items.map((text,index) =>{
+                  // console.log(text.img)
                   return(
                         <MDBCol md="4" key={index}>
                         <MDBCard style={{ width: "20rem" }}>
-                            <MDBCardImage className="img-fluid" src={text.img.Shirt}
+                            <MDBCardImage className="img-fluid" src={
+                              // text.img.Shirt
+                            text.Image
+                            }
                             // "https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
                             waves />
                             <MDBCardBody>
-                            <MDBCardTitle>{text.Title}</MDBCardTitle>
+                            <MDBCardTitle>{text.Name}</MDBCardTitle>
                             <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
                               Rs. {text.Price}
                             </MDBCardText>
