@@ -14,6 +14,8 @@ class AdminComponent extends React.Component {
       image: null,
       url: "",
       progress: 0,
+      Category: '',
+      SubCategory: ''
 
     };
     this.imegesState = this.imegesState.bind(this);
@@ -54,6 +56,8 @@ class AdminComponent extends React.Component {
         Name: this.state.fname,
         Price: this.state.Price,
         Image: this.state.url,
+        Category: this.state.Category,
+        ItemType: this.state.SubCategory
       }
       console.log(data, 'yes')
       FireStore.collection('Product').add(data).then(function(docRef) {
@@ -102,10 +106,14 @@ class AdminComponent extends React.Component {
   }
 
   changeHandler = event => {
+    console.log(event.target.name, event.target.value)
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
+    const Mens = ["Winter Wear", 'Shirts', 'Basic Tees', 'Graphics Tees', 'Polo', 'Denim'];
+    const Womens = ['Winter Wear', 'Tops', 'Shirts', 'Denim', 'Bags', 'Shawls'];
+    const Accessory = ['Watchs', 'Caps', 'Bracelets', 'Socks', 'Belts', 'Glasses']
     console.log(this.state.image);
     console.log(this.state)
     return (
@@ -157,7 +165,7 @@ class AdminComponent extends React.Component {
             
           </MDBRow>
         <MDBRow>
-          <MDBCol md="4">
+          <MDBCol md="4" className="mb-3">
             <div className="custom-file">
             <input
                 type="file"
@@ -174,7 +182,68 @@ class AdminComponent extends React.Component {
             </label>
             </div>
           </MDBCol>
-          <MDBCol md="4">
+          <MDBCol md='4' className="mb-3">
+          <div>
+            <select className="browser-default custom-select" name="Category" onChange={this.changeHandler }>
+              <option disabled selected>Category</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol md="4" className="mb-3">
+          <div>
+            <select className="browser-default custom-select" name="SubCategory" onChange={this.changeHandler }>
+              <option disabled selected>Category</option>
+               {
+                 this.state.Category === 'Men' ?
+                 Mens.map((text, index) => {
+                   return(
+                     <option value={text}>{text}</option>
+
+                   )
+
+                 })
+                 :
+                 null
+
+                 
+                }
+                {
+
+                  this.state.Category === 'Women' ?
+                  Womens.map((text, index) => {
+                    return(
+                      <option value={text}>{text}</option>
+                      
+                      )
+                      
+                    })
+                    :
+                null
+              
+              }
+               {
+
+                this.state.Category === 'Accessories' ?
+                Accessory.map((text, index) => {
+                return(
+                  <option value={text}>{text}</option>
+                  
+                  )
+                  
+                })
+                :
+                null
+
+                }
+            </select>
+          </div>
+          </MDBCol>
+          <MDBCol md="4" className="mb-3">
             <img src={this.state.url || "http://via.placeholder.com/400x250"} width="400px" alt="Image" />
           </MDBCol>
         </MDBRow>

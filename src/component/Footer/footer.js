@@ -34,7 +34,7 @@ const FooterComponent = () => {
       {/* </MDBContainer> */}
       <div className="footer-copyright text-left py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} CreatedBy: Jahanzaib Usman
+          &copy; {new Date().getFullYear()} All Right Reserved:
         </MDBContainer>
       </div>
     </MDBFooter>
