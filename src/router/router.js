@@ -21,18 +21,18 @@ class RouteObject extends Component{
           AllData: [],
       }
   }
-componentDidMount(){
+componentWillMount(){
     const array = [];
     FireStore.collection("Product").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             array.push(doc.data());
-            console.log(doc.id, " => ", doc.data());
+            // console.log(doc.id, " => ", doc.data());
         });
         // this.props.SaveDataToRedux(array)
-        console.log(array);
+        // console.log(array);
     });
     setTimeout(() => {
-        console.log(array)
+        // console.log(array)
         this.setState({AllData: array});
         this.props.SaveDataToRedux(array)
 
