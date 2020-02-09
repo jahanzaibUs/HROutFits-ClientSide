@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import Shirt from "../../assets/Mens/shirts.jpg"
-class WomenComponent extends Component{
+class WomenWearComponent extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -20,18 +20,18 @@ class WomenComponent extends Component{
         <h1>Women's Arrivals</h1>
       <MDBRow>
           {
-              this.state.Items.map((text,index) =>{
+              this.props.ProductWear.map((text,index) =>{
                   console.log(text.img)
                   return(
                         <MDBCol md="4" key={index}>
 
                             <Link to="/cart">
                             <MDBCard style={{ width: "20rem" }}>
-                                <MDBCardImage className="img-fluid" src={text.img.Shirt}
+                                <MDBCardImage className="img-fluid" src={text.Image}
                                 // "https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
                                 waves />
                                 <MDBCardBody>
-                                <MDBCardTitle>{text.Title}</MDBCardTitle>
+                                <MDBCardTitle>{text.Name}</MDBCardTitle>
                                 <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
                                 Rs. {text.Price}
                                 </MDBCardText>
@@ -50,4 +50,4 @@ class WomenComponent extends Component{
     }
 }
 
-export default WomenComponent;
+export default WomenWearComponent;

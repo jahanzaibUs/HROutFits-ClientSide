@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 import MensComponent from "../../component/Men/men";
+import { connect } from "react-redux";
 class MensContainert extends Component{
   
 render(){
     return(
-        <MensComponent />
+        <MensComponent 
+        ProductMan={this.props.Product}
+        />
         );
     }
 }
-
-export default MensContainert;
+const mapStateToProps = (state) => {
+    return {
+       Product: state.root.Data,
+    }
+}
+function mapDispatchToProps(dispatch){
+    // return{
+    //   SaveDataToRedux: (data) => {dispatch(GetProductData(data))}
+    // }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MensContainert);

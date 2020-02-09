@@ -7,51 +7,51 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 import { FireStore } from '../firebase';
 class NewArrivalComponent extends Component{
   // items = [1, 2, 3, 4, 5]
-  items: []
+  // items: []
  constructor(props){
 super(props);
    this.state = {
-     currentIndex: 0,
-     responsive: { 1024: { items: 3 } },
-     galleryItems: this.galleryItems(),
+    //  currentIndex: 0,
+    //  responsive: { 1024: { items: 3 } },
+    //  galleryItems: this.galleryItems(),
      Items: []
     }
     
   }
-  slideTo = (i) => this.setState({ currentIndex: i })
+  // slideTo = (i) => this.setState({ currentIndex: i })
  
-  onSlideChanged = (e) => this.setState({ currentIndex: e.item })
+  // onSlideChanged = (e) => this.setState({ currentIndex: e.item })
  
-  slideNext = () => this.setState({ currentIndex: this.state.currentIndex + 1 })
+  // slideNext = () => this.setState({ currentIndex: this.state.currentIndex + 1 })
  
-  slidePrev = () => this.setState({ currentIndex: this.state.currentIndex - 1 })
+  // slidePrev = () => this.setState({ currentIndex: this.state.currentIndex - 1 })
  
-  thumbItem = (item, i) => <span onClick={() => this.slideTo(i)}>* </span>
+  // thumbItem = (item, i) => <span onClick={() => this.slideTo(i)}>* </span>
  
-  galleryItems() {
-    return this.items.map((text,index) =>{
-      console.log(text, 'tex')
-      return(
+  // galleryItems() {
+  //   return this.items.map((text,index) =>{
+  //     console.log(text, 'tex')
+  //     return(
 
-        <MDBCol md="4" key={index} className='MarginBottom5'>
-          <MDBCard style={{ width: "20rem" }}>
-              <MDBCardImage className="img-fluid" src={
-                // text.img.Shirt
-                text.Image
-              }
-              waves />
-              <MDBCardBody>
-              <MDBCardTitle>{text.Name}</MDBCardTitle>
-              <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
-                Rs. {text.Price}
-              </MDBCardText>
-              <MDBBtn href="#" className="Width100" >Add to Cart</MDBBtn>
-              </MDBCardBody>
-          </MDBCard>
-          </MDBCol>
-    )
-    })
-  }
+  //       <MDBCol md="4" key={index} className='MarginBottom5'>
+  //         <MDBCard style={{ width: "20rem" }}>
+  //             <MDBCardImage className="img-fluid" src={
+  //               // text.img.Shirt
+  //               text.Image
+  //             }
+  //             waves />
+  //             <MDBCardBody>
+  //             <MDBCardTitle>{text.Name}</MDBCardTitle>
+  //             <MDBCardText className="FontColorDefault FontSize22px FontWeightBold">
+  //               Rs. {text.Price}
+  //             </MDBCardText>
+  //             <MDBBtn href="#" className="Width100" >Add to Cart</MDBBtn>
+  //             </MDBCardBody>
+  //         </MDBCard>
+  //         </MDBCol>
+  //   )
+  //   })
+  // }
  
 
 
@@ -103,17 +103,17 @@ componentDidMount(){
 //   return null;
 // }
 render(){
-  console.log(this.props.ProductDetails, this.state.Items)
-  console.log(this.state.galleryItems, 'gaell')
-  console.log(this.items, 'items')
+  // console.log(this.props.ProductDetails, this.state.Items)
+  // console.log(this.state.galleryItems, 'gaell')
+  // console.log(this.items, 'items')
 
-  const { galleryItems, responsive, currentIndex } = this.state
+  // const { galleryItems, responsive, currentIndex } = this.state
 
   return (
     <MDBContainer className="mt-5 mb-5">
         <h1>New Arrivals</h1>
 
-        <div>
+        {/* <div>
         <ReactAliceCarousel
           dotsDisabled={true}
           buttonsDisabled={true}
@@ -126,12 +126,12 @@ render(){
         <ul>{this.items.map(this.thumbItem)}</ul>
         <button onClick={() => this.slidePrev()}>Prev button</button>
         <button onClick={() => this.slideNext()}>Next button</button>
-      </div>
+      </div> */}
 
 
 
 
-      {/* <MDBRow>
+      <MDBRow>
 
         
       {
@@ -167,7 +167,7 @@ render(){
           }
             
    
-      </MDBRow> */}
+      </MDBRow>
     </MDBContainer>
   )}
 }

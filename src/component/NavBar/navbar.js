@@ -40,9 +40,18 @@ render() {
                       Winter Wear
                   </Link>
                       </MDBDropdownItem>
+                      <Link to='/mens-shirts'>
+
                   <MDBDropdownItem >Shirts</MDBDropdownItem>
+                      </Link>
+                      <Link to='mens-basics-tees'>
+
                   <MDBDropdownItem >Basic Tees</MDBDropdownItem>
+                      </Link>
+                      <Link to='mens-graphics-tees'>
+
                   <MDBDropdownItem >Graphics Tees</MDBDropdownItem>
+                      </Link>
                   <MDBDropdownItem >Polo</MDBDropdownItem>
                   <MDBDropdownItem >Denim</MDBDropdownItem>
 
@@ -56,7 +65,7 @@ render() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                     <MDBDropdownItem >
-                  <Link to="/mens-items">
+                  <Link to="/womens-winter-wear">
                       Winter Wear
                   </Link>
                       </MDBDropdownItem>
